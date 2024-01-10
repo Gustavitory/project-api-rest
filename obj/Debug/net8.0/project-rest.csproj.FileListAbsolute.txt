@@ -31,3 +31,4 @@
 /Users/gustavoriera/Development/NET/project-rest/obj/Debug/net8.0/project-rest.pdb
 /Users/gustavoriera/Development/NET/project-rest/obj/Debug/net8.0/project-rest.genruntimeconfig.cache
 /Users/gustavoriera/Development/NET/project-rest/obj/Debug/net8.0/ref/project-rest.dll
+/Users/gustavoriera/Development/NET/project-rest/obj/Debug/net8.0/project-rest.sourcelink.json
