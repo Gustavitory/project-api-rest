@@ -34,6 +34,7 @@ public class WeatherForecastController : Controller
     [HttpGet(Name = "GetWeatherForecast")]
     public IEnumerable<WeatherForecast> Get()
     {
+        _logger.LogInformation("API  retornando lista de weatherforecast");
         return ListWeatherForecast;
     }
 
