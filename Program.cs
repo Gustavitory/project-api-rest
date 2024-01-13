@@ -1,4 +1,7 @@
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using project_rest.Middlewares;
+using services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +12,18 @@ builder.Services.AddSwaggerGen();
 //añadimos los controllers 
 builder.Services.AddControllers();
 
+//Forma uno de inyectar dependencia(recomendada):
+builder.Services.AddScoped<IHelloWorldService, HelloWorldService>();
+
+//forma dos de inyectar dependencia (permite pasar parametros a la clase):
+//builder.Services.AddScoped<IHelloWorldService>(p => new HelloWorldService());
+
+// CONECTAMOS LA BASE DE DATOS:
+//extraemos la configuracion
+var connectionString = builder.Configuration.GetConnectionString("PostgreConnection");
+//realizamos la coneccion:
+builder.Services.AddDbContext<PostgreContext>(options => options.UseNpgsql(connectionString));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -17,6 +32,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.MapGet("/dbConnection", ([FromServices] PostgreContext dbContext) =>
+{
+    dbContext.Database.EnsureCreated();
+    return Results.Ok("DB in memory: " + dbContext.Database.EnsureCreated());
+});
 
 app.UseHttpsRedirection();
 

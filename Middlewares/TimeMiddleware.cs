@@ -8,7 +8,7 @@ public class TimeMiddleware
         next = nextRequest;
     }
 
-    public async Task Invoque(HttpContext context)
+    public async Task Invoke(HttpContext context)
     {
         await next(context);
         if (context.Request.Query.Any(p => p.Key == "time"))
