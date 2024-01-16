@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Runtime.InteropServices;
 
-namespace projectef.Models;
+namespace project_rest.Domain.Models;
 
 public class Category
 {

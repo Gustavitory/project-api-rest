@@ -1,11 +1,11 @@
 using System;
 using Microsoft.EntityFrameworkCore;
-using projectef.Models;
+using project_rest.Domain.Models;
 
 public class PostgreContext : DbContext
 {
     public DbSet<Category> Categories { get; set; }
-    public DbSet<projectef.Models.Task> Tasks { get; set; }
+    public DbSet<project_rest.Domain.Models.Task> Tasks { get; set; }
 
     public PostgreContext(DbContextOptions<PostgreContext> options) : base(options) { }
 
@@ -24,7 +24,7 @@ public class PostgreContext : DbContext
 
             category.HasData(categoryInit);
         });
-        modelBuilder.Entity<projectef.Models.Task>(task =>
+        modelBuilder.Entity<project_rest.Domain.Models.Task>(task =>
         {
             task.ToTable("Task");
             task.HasKey(p => p.Id);
