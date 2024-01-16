@@ -1,8 +1,9 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics;
 using Microsoft.AspNetCore.SignalR;
 
-namespace projectef.Models;
+namespace project_rest.Domain.Models;
 
 public enum EPriority
 {
@@ -27,5 +28,5 @@ public class Task
 
     // [NotMapped]
     public string Resume { get; set; }
-    public string Encargado { get; set; }
+    public TimeSpan TimeSpent { get; set; }
 }
