@@ -33,12 +33,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.MapGet("/dbConnection", ([FromServices] PostgreContext dbContext) =>
-{
-    dbContext.Database.EnsureCreated();
-    return Results.Ok("DB in memory: " + dbContext.Database.EnsureCreated());
-});
-
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
